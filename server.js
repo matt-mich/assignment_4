@@ -9,12 +9,14 @@ var cors = require('cors');
 var jwt = require('jsonwebtoken');
 
 var app = express();
+app.use(cors());
+
 module.exports = app; // for testing
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(passport.initialize());
-app.use(cors());
 
 var router = express.Router();
 
