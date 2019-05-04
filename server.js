@@ -215,6 +215,8 @@ router.route('/movies')
                         for (i = 0;i<movies.length;i++) {
                             console.log(movies[i].reviews)
                         }
+                        console.log(movies);
+
                         res.json(movies);
                     });
                 }else{
