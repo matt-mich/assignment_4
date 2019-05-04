@@ -209,7 +209,7 @@ router.route('/movies')
                             movie.reviews = [];
                             all_reviews.forEach(function(review){
                                 if(review.title === movie.title){
-                                    movie.reviews.append(review);
+                                    movie.reviews.push(review);
                                 }
                             });
                         });
