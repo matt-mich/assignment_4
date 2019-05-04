@@ -202,15 +202,18 @@ router.route('/movies')
             Movie.find(function (err, movies) {
                 if (err) res.send(err);
                 if(req.body.reviews && req.body.reviews === 'true'){
+                    console.log(movies);
                     movies.forEach(function(movie){
                         movie.reviews = [];
                         console.log(reviews);
                         Review.find({title:movie.title},function (err, reviews) {
                             movie.reviews = reviews
                         });
+                        console.log(movies);
                     });
+                }else{
+                    res.json(movies);
                 }
-                res.json(movies);
             })
         }else{
             var title_query = req.body.title;
