@@ -214,10 +214,11 @@ router.route('/movies')
                                 if (reviews[j].title === movies[i].title) {
                                     movies[i].reviews.push(reviews[j]);
                                     num_reviews++;
-                                    review_sum += reviews[j].rating;
+                                    review_sum += parseInt(reviews[j].rating);
                                 }
                             }
                             movies[i].avgRating = (review_sum/num_reviews);
+
                         }
                         res.json(movies);
                     });
