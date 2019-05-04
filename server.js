@@ -209,9 +209,11 @@ router.route('/movies')
                             for (j = 0; j < reviews.length; j++) {
                                 if (reviews[j].title === movies[i].title) {
                                     movies[i].reviews.push(reviews[j]);
-                                    console.log(reviews[j])
                                 }
                             }
+                        }
+                        for (i = 0;i<movies.length;i++) {
+                            console.log(movies[i].reviews)
                         }
                         res.json(movies);
                     });
