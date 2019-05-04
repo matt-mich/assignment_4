@@ -222,9 +222,9 @@ router.route('/movies')
                             movies[i].avgRating = (review_sum/num_reviews).toFixed(2);
                         }
                         movies.sort(function(a, b) {
-                            if ( a.avgRating < b.avgRating ){
+                            if ( a.avgRating > b.avgRating ){
                                 return -1;
-                            }else if ( a.avgRating > b.avgRating ){
+                            }else if ( a.avgRating < b.avgRating ){
                                 return 1;
                             }else{
                                 return 0;
