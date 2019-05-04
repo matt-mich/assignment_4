@@ -42,6 +42,32 @@ router.route('/users/:userId')
         });
     });
 
+router.route('/movies/:movieID')
+    .get(authJwtController.isAuthenticated, function (req, res) {
+        var id = req.params.movieId;
+        Movie.findById(id, function(err, movie) {
+            Review.find(function (err, reviews) {
+
+                if (err) res.send(err);
+                movie = JSON.stringify(movie);
+                movie = JSON.parse(movie);
+
+                movie.reviews = [];
+                let num_reviews = 0;
+                let review_sum = 0;
+                for (j = 0; j < reviews.length; j++) {
+                    if (reviews[j].title === movies[i].title) {
+                        movie.reviews.push(reviews[j]);
+                        num_reviews++;
+                        review_sum += parseInt(reviews[j].rating);
+                    }
+                }
+                movie.avgRating = (review_sum/num_reviews).toFixed(2);
+                res.json(movie);
+            });
+        });
+    });
+
 router.route('/review')
     .post(authJwtController.isAuthenticated, function (req, res) {
         if (!req.body.review || !req.body.title) {
