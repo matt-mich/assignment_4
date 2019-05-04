@@ -206,9 +206,9 @@ router.route('/movies')
                     movies.forEach(function(movie){
                         Review.find({title:movie.title},function (err, reviews) {
                             movie.reviews = reviews
-
                         });
                     });
+                    res.json(movies);
                 }else{
                     res.json(movies);
                 }
