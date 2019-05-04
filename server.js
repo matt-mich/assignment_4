@@ -206,6 +206,7 @@ router.route('/movies')
                     movies.forEach(function(movie){
                         Review.find({title:movie.title},function (err, reviews) {
                             movie.reviews = reviews
+
                         });
                     });
                 }else{
