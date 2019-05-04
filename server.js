@@ -51,6 +51,8 @@ router.route('/review')
         review.username = "NULL";
         review.title = req.body.title;
         review.review = req.body.review;
+        review.rating = req.body.review;
+
         review.jwt = req.headers.authorization.substring(4);
 
         review.save(function(err) {
