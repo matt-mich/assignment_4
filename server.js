@@ -207,7 +207,7 @@ router.route('/movies')
                         all_reviews = reviews;
 
 
-                        for (i = 0;i<movies.length();i++) {
+                        for (i = 0;i<movies.length;i++) {
                             movies[i].reviews = [];
                             for (j = 0; j < reviews.length(); j++) {
                                 if (reviews[j].title === movies[i].title) {
