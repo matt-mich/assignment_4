@@ -205,7 +205,9 @@ router.route('/movies')
                     console.log(movies);
                     movies.forEach(function(movie){
                         Review.find({title:movie.title},function (err, reviews) {
-                            movie.reviews = reviews;
+                            movie_obj = JSON.parse(movie);
+                            movie_obj.reviews = reviews;
+                            movie = JSON.stringify(movie_obj)
                             console.log(movie);
                         });
                     });
