@@ -205,14 +205,17 @@ router.route('/movies')
                     var all_reviews  = [];
                     Review.find(function (err, reviews) {
                         all_reviews = reviews;
-                        movies.forEach(function(movie){
-                            movie.reviews = [];
-                            all_reviews.forEach(function(review){
-                                if(review.title === movie.title){
-                                    movie.reviews.push(review);
+
+
+                        for (i = 0;i<movies.length();i++) {
+                            movies[i].reviews = [];
+                            for (j = 0; j < reviews.length(); j++) {
+                                if (reviews[j].title === movies[i].title) {
+                                    movies[i].reviews.push(reviews[j]);
+                                    console.log(reviews[j])
                                 }
-                            });
-                        });
+                            }
+                        }
                         res.json(movies);
                     });
                 }else{
