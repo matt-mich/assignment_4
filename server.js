@@ -205,11 +205,11 @@ router.route('/movies')
                     var all_reviews  = [];
                     Review.find(function (err, reviews) {
                         all_reviews = reviews;
-                        console.log(all_reviews);
                         movies.forEach(function(movie){
+                            movies.reviews = [];
                             all_reviews.forEach(function(review){
                                 if(review.title === movie.title){
-                                    console.log(review.title);
+                                    movie.reviews.append(review);
                                 }
                             });
                         });
