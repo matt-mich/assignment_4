@@ -215,11 +215,11 @@ router.route('/movies')
                                     movies[i].reviews.push(reviews[j]);
                                     num_reviews++;
                                     review_sum += parseInt(reviews[j].rating);
+                                    console.log("SUM: "+review_sum+" NUM: "+num_reviews+" AVG: "+(review_sum/num_reviews));
+
                                 }
                             }
-                            console.log(review_sum);
-                            console.log(num_reviews);
-                            console.log(review_sum/num_reviews);
+                            console.log("F SUM: "+review_sum+" NUM: "+num_reviews+" AVG: "+(review_sum/num_reviews));
 
                             movies[i].avgRating = (review_sum/num_reviews);
 
