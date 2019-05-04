@@ -208,8 +208,8 @@ router.route('/movies')
 
                         for (i = 0;i<movies.length;i++) {
                             movies[i].reviews = [];
-                            let num_reviews = 0;
-                            let review_sum = 0;
+                            var num_reviews = 0;
+                            var review_sum = 0;
                             for (j = 0; j < reviews.length; j++) {
                                 if (reviews[j].title === movies[i].title) {
                                     movies[i].reviews.push(reviews[j]);
