@@ -201,6 +201,15 @@ router.route('/movies')
             //res.json({success: false, message: 'Please submit title of the movie you wish to find.'});
             Movie.find(function (err, movies) {
                 if (err) res.send(err);
+                if(req.body.reviews && req.body.reviews === 'true'){
+                    movies.forEach(function(movie){
+                        movie.reviews = [];
+                        console.log(reviews);
+                        Review.find({title:movie.title},function (err, reviews) {
+                            movie.reviews = reviews
+                        });
+                    });
+                }
                 res.json(movies);
             })
         }else{
