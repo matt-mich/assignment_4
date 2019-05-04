@@ -13,6 +13,7 @@ mongoose.set('useCreateIndex', true);
 var ReviewSchema = new Schema({
     title: { type: String, required: true},
     username: { type: String, required: true},
+    rating: { type: String, required: true},
     jwt:{type: String, required: true},
     review: { type: String, required: true},
 });

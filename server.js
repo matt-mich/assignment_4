@@ -208,14 +208,14 @@ router.route('/movies')
 
                         for (i = 0;i<movies.length;i++) {
                             movies[i].reviews = [];
-                            var num_reviews = 0;
-                            var review_sum = 0;
+                            let num_reviews = 0;
+                            let review_sum = 0;
                             for (j = 0; j < reviews.length; j++) {
                                 if (reviews[j].title === movies[i].title) {
                                     movies[i].reviews.push(reviews[j]);
                                     num_reviews++;
                                     review_sum += parseInt(reviews[j].rating);
-                                    console.log("SUM: "+review_sum+" NUM: "+num_reviews+" AVG: "+(review_sum/num_reviews));
+                                    console.log("RATE: "+reviews[j].rating +" RI: " + parseInt(reviews[j].rating));
 
                                 }
                             }
