@@ -206,7 +206,7 @@ router.route('/movies')
                     Review.find(function (err, reviews) {
                         all_reviews = reviews;
                         movies.forEach(function(movie){
-                            movies.reviews = [];
+                            movie.reviews = [];
                             all_reviews.forEach(function(review){
                                 if(review.title === movie.title){
                                     movie.reviews.append(review);
