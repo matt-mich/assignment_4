@@ -198,8 +198,12 @@ router.route('/movies')
 
     .get(authJwtController.isAuthenticated, function (req, res) {
         if (!req.body.title){
-            res.json({success: false, message: 'Please submit title of the movie you wish to find.'});
-        } else {
+            //res.json({success: false, message: 'Please submit title of the movie you wish to find.'});
+            Movie.find(function (err, movies) {
+                if (err) res.send(err);
+                res.json({success: true, message: movies});
+            })
+        }else{
             var title_query = req.body.title;
             var reviews_json = {};
             Movie.findOne({title:title_query}, function (err, movie) {
@@ -238,6 +242,7 @@ router.post('/signin', function(req, res) {
         console.log(userNew.password);
         User.findOne({ username: userNew.username }).select('name username password').exec(function(err, user) {
             if (err) res.send(err);
+            console.log("Userfound");
 
             user.comparePassword(userNew.password, function(isMatch){
                 if (isMatch) {
