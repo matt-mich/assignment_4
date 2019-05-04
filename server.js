@@ -217,6 +217,9 @@ router.route('/movies')
                         }
                         console.log(movies);
 
+                        movies = '"'+ movies + '"';
+                        console.log(JSON.parse(movies));
+
                         res.json(movies);
                     });
                 }else{
