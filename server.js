@@ -204,12 +204,9 @@ router.route('/movies')
                 if(req.body.reviews && req.body.reviews === 'true'){
                     var all_reviews  = [];
                     Review.find(function (err, reviews) {
-                        all_reviews = reviews;
-
-
                         for (i = 0;i<movies.length;i++) {
                             movies[i].reviews = [];
-                            for (j = 0; j < reviews.length(); j++) {
+                            for (j = 0; j < reviews.length; j++) {
                                 if (reviews[j].title === movies[i].title) {
                                     movies[i].reviews.push(reviews[j]);
                                     console.log(reviews[j])
