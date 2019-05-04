@@ -204,6 +204,9 @@ router.route('/movies')
                 if(req.body.reviews && req.body.reviews === 'true'){
                     var all_reviews  = [];
                     Review.find(function (err, reviews) {
+                        movies = JSON.stringify(movies);
+                        movies = JSON.parse(movies);
+
                         for (i = 0;i<movies.length;i++) {
                             movies[i].reviews = [];
                             for (j = 0; j < reviews.length; j++) {
@@ -212,16 +215,6 @@ router.route('/movies')
                                 }
                             }
                         }
-                        for (i = 0;i<movies.length;i++) {
-                            console.log(movies[i].reviews)
-                        }
-                        console.log(movies);
-
-                        movies = '"'+ movies + '"';
-                        movies = JSON.stringify(movies);
-                        movies_obj = JSON.parse(movies);
-                        console.log(movies_obj);
-
                         res.json(movies);
                     });
                 }else{
