@@ -201,7 +201,7 @@ router.route('/movies')
             //res.json({success: false, message: 'Please submit title of the movie you wish to find.'});
             Movie.find(function (err, movies) {
                 if (err) res.send(err);
-                if((req.body.reviews && req.body.reviews === 'true')||(req.params.reviews&& req.params.reviews === 'true')){
+                if((req.body.reviews && req.body.reviews === 'true')||(req.params.reviews && req.params.reviews === 'true')){
                     Review.find(function (err, reviews) {
                         movies = JSON.stringify(movies);
                         movies = JSON.parse(movies);
