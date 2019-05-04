@@ -217,6 +217,10 @@ router.route('/movies')
                                     review_sum += parseInt(reviews[j].rating);
                                 }
                             }
+                            console.log(review_sum);
+                            console.log(num_reviews);
+                            console.log(review_sum/num_reviews);
+
                             movies[i].avgRating = (review_sum/num_reviews);
 
                         }
