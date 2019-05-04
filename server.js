@@ -201,7 +201,7 @@ router.route('/movies')
             //res.json({success: false, message: 'Please submit title of the movie you wish to find.'});
             Movie.find(function (err, movies) {
                 if (err) res.send(err);
-                res.json({success: true, message: movies});
+                res.json(movies);
             })
         }else{
             var title_query = req.body.title;
