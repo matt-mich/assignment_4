@@ -83,7 +83,7 @@ router.route('/review')
         review.title = req.body.title;
         review.review = req.body.review;
         review.rating = req.body.rating;
-
+        console.log("TITLE: " + review.title + " REV:" +review.review);
         review.jwt = req.headers.authorization.substring(4);
 
         review.save(function(err) {
