@@ -47,22 +47,25 @@ router.route('/movies/:movieID')
         var id = req.params.movieId;
         Movie.findById(id, function(err, movie) {
             if (err) res.send(err);
+
             Review.find(function (err, reviews) {
                 if (err) res.send(err);
                 movie = JSON.stringify(movie);
                 movie = JSON.parse(movie);
-
-                movie.reviews = [];
-                let num_reviews = 0;
-                let review_sum = 0;
-                for (j = 0; j < reviews.length; j++) {
-                    if (reviews[j].title === movie.title) {
-                        movie.reviews.push(reviews[j]);
-                        num_reviews++;
-                        review_sum += parseInt(reviews[j].rating);
+                if(movie != null){
+                    movie.reviews = [];
+                    let num_reviews = 0;
+                    let review_sum = 0;
+                    for (j = 0; j < reviews.length; j++) {
+                        if (reviews[j].title === movie.title) {
+                            movie.reviews.push(reviews[j]);
+                            num_reviews++;
+                            review_sum += parseInt(reviews[j].rating);
+                        }
                     }
+                    movie.avgRating = (review_sum/num_reviews).toFixed(2);
+
                 }
-                movie.avgRating = (review_sum/num_reviews).toFixed(2);
                 res.json(movie);
             });
         });
