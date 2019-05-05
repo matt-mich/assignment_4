@@ -42,7 +42,7 @@ router.route('/users/:userId')
         });
     });
 
-router.route('/movies/:movieID')
+router.route('/movies/:movieId')
     .get(authJwtController.isAuthenticated, function (req, res) {
         var id = req.params.movieId;
         Movie.findById(id, function(err, movie) {
