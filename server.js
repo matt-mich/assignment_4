@@ -45,9 +45,10 @@ router.route('/users/:userId')
 router.route('/movies/:movieId')
     .get(authJwtController.isAuthenticated, function (req, res) {
         var id = req.params.movieId;
+        console.log("id: " + id);
         Movie.findById(id, function(err, movie) {
             if (err) res.send(err);
-
+            console.log(movie);
             Review.find(function (err, reviews) {
                 if (err) res.send(err);
                 console.log(movie);
