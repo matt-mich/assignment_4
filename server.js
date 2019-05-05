@@ -50,6 +50,7 @@ router.route('/movies/:movieID')
 
             Review.find(function (err, reviews) {
                 if (err) res.send(err);
+                console.log(movie);
                 movie = JSON.stringify(movie);
                 movie = JSON.parse(movie);
                 if(movie != null){
